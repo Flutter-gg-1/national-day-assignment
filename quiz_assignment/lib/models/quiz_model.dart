@@ -1,24 +1,31 @@
 class QuizModel {
-  String? question;
-  String? a;
-  String? b;
-  String? c;
-  String? d;
-  String? answer;
+  late final String question;
+  late final String a;
+  late final String b;
+  late final String c;
+  late final String d;
+  late final String answer;
 
-  QuizModel({this.question, this.a, this.b, this.c, this.d, this.answer});
+  QuizModel(
+      {required this.question,
+      required this.a,
+      required this.b,
+      required this.c,
+      required this.d,
+      required this.answer});
 
-  QuizModel.fromJson(Map<String, dynamic> json) {
-    question = json['question'];
-    a = json['A'];
-    b = json['B'];
-    c = json['C'];
-    d = json['D'];
-    answer = json['answer'];
+  factory QuizModel.fromJson(Map<String, dynamic> json) {
+    return QuizModel(
+        question: json['question'],
+        a: json['A'],
+        b: json['B'],
+        c: json['C'],
+        d: json['D'],
+        answer: json['answer']);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = {};
     data['question'] = question;
     data['A'] = a;
     data['B'] = b;
