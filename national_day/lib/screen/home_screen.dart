@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             const Text('Hello World!'),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
-            const MyButton(
+            MyButton(
+              onPressed: () {},
               text: 'Let’s start',
             ),
           ],
