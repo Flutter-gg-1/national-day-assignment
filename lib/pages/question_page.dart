@@ -16,7 +16,6 @@ class _QuestionPageState extends State<QuestionPage> {
   Color normalColorC = const Color(0xffC9FBB1);
   Color normalColorD = const Color(0xffC9FBB1);
   bool answered = false;
-  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +26,7 @@ class _QuestionPageState extends State<QuestionPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                GetIt.I.get<QuestionData>().lstQuestions[index].question,
+                GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].question,
                 style: const TextStyle(fontSize: 30),
               ),
               const SizedBox(
@@ -38,11 +37,12 @@ class _QuestionPageState extends State<QuestionPage> {
                   if (!answered) {
                     if (GetIt.I
                             .get<QuestionData>()
-                            .lstQuestions[index]
+                            .lstQuestions[GetIt.I.get<QuestionData>().index]
                             .answer ==
                         'A') {
                       normalColorA = Colors.green;
-                      GetIt.I.get<QuestionData>().trueAnswers++;
+                      GetIt.I.get<QuestionData>().score++;
+                      GetIt.I.get<QuestionData>().saveScore();
                     } else {
                       normalColorA = Colors.red;
                     }
@@ -68,7 +68,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[index].A,
+                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].A,
                         ),
                         const Text("A")
                       ],
@@ -84,11 +84,12 @@ class _QuestionPageState extends State<QuestionPage> {
                   if (!answered) {
                     if (GetIt.I
                             .get<QuestionData>()
-                            .lstQuestions[index]
+                            .lstQuestions[GetIt.I.get<QuestionData>().index]
                             .answer ==
                         'B') {
                       normalColorB = Colors.green;
-                      GetIt.I.get<QuestionData>().trueAnswers++;
+                      GetIt.I.get<QuestionData>().score++;
+                      GetIt.I.get<QuestionData>().saveScore();
                     } else {
                       normalColorB = Colors.red;
                     }
@@ -114,7 +115,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[index].B,
+                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].B,
                         ),
                         const Text("B")
                       ],
@@ -130,11 +131,12 @@ class _QuestionPageState extends State<QuestionPage> {
                   if (!answered) {
                     if (GetIt.I
                             .get<QuestionData>()
-                            .lstQuestions[index]
+                            .lstQuestions[GetIt.I.get<QuestionData>().index]
                             .answer ==
                         'C') {
                       normalColorC = Colors.green;
-                      GetIt.I.get<QuestionData>().trueAnswers++;
+                      GetIt.I.get<QuestionData>().score++;
+                      GetIt.I.get<QuestionData>().saveScore();
                     } else {
                       normalColorC = Colors.red;
                     }
@@ -160,7 +162,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[index].C,
+                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].C,
                         ),
                         const Text("C")
                       ],
@@ -176,11 +178,12 @@ class _QuestionPageState extends State<QuestionPage> {
                   if (!answered) {
                     if (GetIt.I
                             .get<QuestionData>()
-                            .lstQuestions[index]
+                            .lstQuestions[GetIt.I.get<QuestionData>().index]
                             .answer ==
                         'D') {
                       normalColorD = Colors.green;
-                      GetIt.I.get<QuestionData>().trueAnswers++;
+                      GetIt.I.get<QuestionData>().score++;
+                      GetIt.I.get<QuestionData>().saveScore();
                     } else {
                       normalColorD = Colors.red;
                     }
@@ -206,7 +209,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[index].D,
+                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].D,
                         ),
                         const Text("D")
                       ],
@@ -219,21 +222,25 @@ class _QuestionPageState extends State<QuestionPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  if (index < GetIt.I.get<QuestionData>().lstQuestions.length-1) {
-                    normalColorA = const Color(0xffC9FBB1);
-                    normalColorB = const Color(0xffC9FBB1);
-                    normalColorC = const Color(0xffC9FBB1);
-                    normalColorD = const Color(0xffC9FBB1);
-                    answered = false;
-                    index++;
-                  } else {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const ScorePage();
-                    }));
-                  }
+                  if (answered) {
+                    if (GetIt.I.get<QuestionData>().index <
+                        GetIt.I.get<QuestionData>().lstQuestions.length - 1) {
+                      normalColorA = const Color(0xffC9FBB1);
+                      normalColorB = const Color(0xffC9FBB1);
+                      normalColorC = const Color(0xffC9FBB1);
+                      normalColorD = const Color(0xffC9FBB1);
+                      answered = false;
+                      GetIt.I.get<QuestionData>().index++;
+                      GetIt.I.get<QuestionData>().saveIndex();
+                    } else {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const ScorePage();
+                      }));
+                    }
 
-                  setState(() {});
+                    setState(() {});
+                  }
                 },
                 child: Container(
                   height: 100,
