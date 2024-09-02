@@ -37,9 +37,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Color getColor(String value) {
     if (value == selectedAnswer) {
       if (selectedAnswer == correctedAnswer) {
-        return Colors.green;
+        return Color(0xff1C8D21);
       } else {
-        return Colors.red;
+        return Color(0xffF0676F);
       }
     }
     return Color(0xffC9FBB1);

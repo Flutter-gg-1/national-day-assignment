@@ -9,32 +9,38 @@ class QuestionData {
   final box = GetStorage();
   int currentQIndex = 0;
   int level = 0;
-  
-  QuestionData(){
+
+  QuestionData() {
     loadData();
   }
 
-  loadData(){
-    if(box.hasData("currentAnswer")){
+  loadData() {
+    if (box.hasData("currentAnswer")) {
       currentQIndex = box.read("currentAnswer");
-    } 
-  }
-
-  saveData(){
-    box.write("currentAnswer", currentQIndex);
-  }
-
-  nextQuestion(BuildContext context){
-    if(currentQIndex < data.length-1){
-      currentQIndex++;
-      saveData();
+    }else {
+      currentQIndex = 0;
+    }
+    if (box.hasData("level")) {
+      level = box.read("level");
     }
     else {
+      level = 0;
+  }
+    }
+  saveData() {
+    box.write("currentAnswer", currentQIndex);
+    box.write("level", level);
+  }
+
+  nextQuestion(BuildContext context) {
+    if (currentQIndex < data.length - 1) {
+      currentQIndex++;
+      saveData();
+    } else {
       box.erase();
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return Winner(level: level);
       }));
     }
   }
-
 }
