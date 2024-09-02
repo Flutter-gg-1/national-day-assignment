@@ -11,19 +11,40 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(child: CustomText(text: "Explore", fontSize: 38, fontWeight: FontWeight.bold,)),
-            const CustomText(text: "Saudi arabia !", fontSize: 38, fontWeight: FontWeight.bold, color: Color(0xff1C8D21),),
-            const SizedBox(height: 80,),
-            CustomElevatedButton(backgroundColors: [Colors.white, Color(0xff1C8D21)], text: "Let’s start", fontSize: 38, fontWeight: FontWeight.bold, textcolor: Colors.black, onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (comtext){
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+              child: CustomText(
+            text: "Explore",
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+          )),
+          const CustomText(
+            text: "Saudi arabia !",
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff1C8D21),
+          ),
+          const SizedBox(
+            height: 80,
+          ),
+          CustomElevatedButton(
+            backgroundColors: [Colors.white, Color(0xff1C8D21)],
+            text: "Let’s start",
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            textcolor: Colors.black,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (comtext) {
                 return const QuestionScreen();
               }));
-            }, width: 270, height: 80,)
-          ],
-        )),
+            },
+            width: 270,
+            height: 80,
+          )
+        ],
+      )),
     );
   }
 }
