@@ -26,11 +26,12 @@ class HomeScreen extends StatelessWidget {
                 child: TextButton(
                   style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.transparent)),
                   onPressed: (){
-                    Navigator.pushReplacement(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: (context)=>const QuestionScreen()
-                      )
+                      ),
+                      (predicate)=>false
                     );
                   },
                   child: Text("Let's start", style: GoogleFonts.dmSans(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black))

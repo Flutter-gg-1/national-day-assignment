@@ -3,13 +3,12 @@ import 'package:get_it/get_it.dart';
 import 'package:saudi_assignment/data/questions.dart';
 
 class ViewChoices extends StatelessWidget {
-  final List<String> choices;
+  // final List<String> choices;
   final Function(int)? onChoice;
-  const ViewChoices({super.key, required this.choices, required this.onChoice});
+  const ViewChoices({super.key, required this.onChoice});
 
   @override
   Widget build(BuildContext context) {
-    bool isClicked = false;
     return Column(
       children: List.generate(GetIt.I.get<Questions>().getCurrentChoices().length, (index){
         return Column(

@@ -109,7 +109,14 @@ class Questions {
   }
 
   void checkAnswer(int choice) {
-    choicesColors[choice] = getCurrentQuestion().answer == choicesLabels[choice] ? const Color(0xff1c8d21) : const Color(0xfff0676f);
+    if(getCurrentQuestion().answer == choicesLabels[choice]) {
+      choicesColors[choice] = const Color(0xff1c8d21);
+      score+=1;
+      log("kfo $score");
+    }
+    else {
+      choicesColors[choice] = const Color(0xfff0676f);
+    }
   }
 
   loadQuestions(){
@@ -130,17 +137,16 @@ class Questions {
     index+=1;
   }
 
-  handleNext() {
+  bool isDone() {
     if(index==9) {
       index = -1;
+      return true;
     }
     else {
       isClicked = false;
       choicesColors = List.generate(getCurrentChoices().length, (index){return const Color(0xffc9fbb1);});
-      if(choicesColors.contains(const Color(0xff1c8d21))) {
-        score+=1;
-      }
       nextQuestion();
+      return false;
     }
   }
 }
