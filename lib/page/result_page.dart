@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:national_day/data_handle/gitt.dart';
 import 'package:national_day/data_handle/models/app_model.dart';
 import 'package:national_day/page/home_page.dart';

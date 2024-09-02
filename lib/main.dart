@@ -7,7 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:national_day/data_handle/gitt.dart';
 import 'package:national_day/data_handle/models/app_model.dart';
 import 'package:national_day/page/home_page.dart';
-import 'package:national_day/page/result_page.dart';
+
 
 
 

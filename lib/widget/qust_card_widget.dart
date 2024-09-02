@@ -33,10 +33,10 @@ class QustCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
              Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: Text(
                 tex,
-                style: TextStyle(fontSize: 13),
+                style: const TextStyle(fontSize: 13),
               ),
             ),
             Padding(
@@ -50,7 +50,7 @@ class QustCardWidget extends StatelessWidget {
                 child:  Center(
                     child: Text(
                   qusNumber,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color(0xffC9FBB1)),
                 )),
