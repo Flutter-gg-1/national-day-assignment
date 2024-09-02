@@ -1,6 +1,5 @@
-import 'dart:developer';
 import 'dart:ui';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:saudi_assignment/models/question.dart';
 
@@ -97,6 +96,7 @@ class Questions {
   late int score;
   late List<Color> choicesColors;
   List<String> choicesLabels = ['A', 'B', 'C', 'D'];
+  bool isClicked = false;
 
   Questions(){
     loadQuestions();
@@ -135,7 +135,11 @@ class Questions {
       index = -1;
     }
     else {
+      isClicked = false;
       choicesColors = List.generate(getCurrentChoices().length, (index){return const Color(0xffc9fbb1);});
+      if(choicesColors.contains(const Color(0xff1c8d21))) {
+        score+=1;
+      }
       nextQuestion();
     }
   }
