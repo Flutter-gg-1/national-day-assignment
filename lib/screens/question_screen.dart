@@ -22,6 +22,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   String? correctAnswer;
   bool isAnswered = false;
 
+
   @override
   void initState() {
     qIndex = widget.index;
@@ -39,6 +40,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
       locator.get<QuestionData>().saveScore(isCorrect, qIndex + 1);
     });
   }
+
+  
 
   @override
   Widget build(BuildContext context) {

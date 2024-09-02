@@ -27,7 +27,7 @@ class RedirectScreen extends StatelessWidget {
     });
     return const Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(color: Colors.green,),
       ),
     );
   }
