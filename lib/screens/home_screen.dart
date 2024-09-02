@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:saudi_assignment/screens/question_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,14 +13,14 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Explore", style: TextStyle(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black),),
-              const Text("Saudi arabia !", style: TextStyle(fontSize: 42.21, fontWeight: FontWeight.w700, color: Color(0xff1c8d21)),),
+              Text("Explore", style: GoogleFonts.dmSans(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black),),
+              Text("Saudi arabia !", style: GoogleFonts.dmSans(fontSize: 42.21, fontWeight: FontWeight.w700, color: const Color(0xff1c8d21)),),
               const SizedBox(height: 79,),
               Container(
                 width: 305,
                 height: 100,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(stops: [0.001,0.5],begin: Alignment.topLeft,colors: [Colors.white,Color(0xff1c8d21)]),
+                  gradient: const LinearGradient(stops: [0.001,0.8],begin: Alignment.topLeft,colors: [Colors.white,Color(0xff1c8d21)]),
                   borderRadius: BorderRadius.circular(15)
                 ),
                 child: TextButton(
@@ -28,11 +29,11 @@ class HomeScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context)=>QuestionScreen()
+                        builder: (context)=>const QuestionScreen()
                       )
                     );
                   },
-                  child: const Text("Let's start", style: TextStyle(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black))
+                  child: Text("Let's start", style: GoogleFonts.dmSans(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black))
                 ),
               )
             ]

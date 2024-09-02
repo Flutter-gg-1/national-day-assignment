@@ -1,8 +1,9 @@
 import 'dart:developer';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:saudi_assignment/models/question.dart';
 
-class Questions {
   final dataQ = [
     {
       "question": "What is the capital city of Saudi Arabia?",
@@ -88,19 +89,54 @@ class Questions {
       "answer": "B"
     }
   ];
+class Questions {
   
   final List<Question> questions = [];
 
+  late int index;
+  late int score;
+  late List<Color> choicesColors;
+  List<String> choicesLabels = ['A', 'B', 'C', 'D'];
+
   Questions(){
     loadQuestions();
+    index = 0;
+    score = 0;
+    choicesColors = List.generate(getCurrentChoices().length, (index){return const Color(0xffc9fbb1);});
     if(questions.isNotEmpty) {
       log('questions added');
     }
   }
 
+  void checkAnswer(int choice) {
+    choicesColors[choice] = getCurrentQuestion().answer == choicesLabels[choice] ? const Color(0xff1c8d21) : const Color(0xfff0676f);
+  }
+
   loadQuestions(){
     for(var q in dataQ) {
       questions.add(Question.fromJson(q));
+    }
+  }
+
+  Question getCurrentQuestion() {
+    return questions[index];
+  }
+
+  List<String> getCurrentChoices() {
+    return [questions[index].A, questions[index].B, questions[index].C, questions[index].D];
+  }
+
+  nextQuestion() {
+    index+=1;
+  }
+
+  handleNext() {
+    if(index==9) {
+      index = -1;
+    }
+    else {
+      choicesColors = List.generate(getCurrentChoices().length, (index){return const Color(0xffc9fbb1);});
+      nextQuestion();
     }
   }
 }
