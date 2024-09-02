@@ -35,9 +35,11 @@ class QuestionData {
   loadState() async {
     if (box.hasData('question index')) {
       questionIndex = await box.read('question index');
+      score = await box.read('score');
     }
     if (questionIndex == 10) {
       questionIndex = 0;
+      score = 0;
     }
   }
 

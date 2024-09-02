@@ -1,35 +1,6 @@
-import 'dart:convert';
 
 class Question {
-  final String question;
-  final String a;
-  final String b;
-  final String c;
-  final String d;
-  final String answer;
-
-  Question({
-    required this.question,
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-    required this.answer,
-  });
-
-  factory Question.fromJson(Map<String, String> json) {
-    return Question(
-      question: json['question'] ?? '',
-      a: json['a'] ?? '',
-      b: json['b'] ?? '',
-      c: json['c'] ?? '',
-      d: json['d'] ?? '',
-      answer: json['answer'] ?? '',
-    );
-  }
-
-  String toJson() => json.encode(toJson());
-
+  
   static List<Map<String, String>> getQuestions() {
     final dataQ = [
       {
