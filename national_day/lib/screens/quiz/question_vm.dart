@@ -1,26 +1,103 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:national_day/model/selected_answer.dart';
+import '../../managers/data_mgr.dart';
 import '../../model/question.dart';
+import '../result/result_screen.dart';
 
 class QuestionVM {
-  List<Question> questions = [];
-  late int currentQuestion;
+  var dataMgr = GetIt.I.get<DataMgr>();
+  late TabController tabController;
+
+  List<Question> get allQuestions => dataMgr.allQuestions;
+  List<SelectedAnswer> get answers => dataMgr.allAnswers;
+
+  Question get currentQuestion => allQuestions[tabController.index];
   late int totalQuestions;
-  int score = 0;
+  String selectedAnswer = '';
 
-  Future<List<Question>> loadQuestions() async {
-    String data = await rootBundle.loadString('assets/questions.json');
-    var jsonResult = json.decode(data);
+  void buttonClicked(BuildContext context) {
+    selectedAnswer = '';
+    if (tabController.index < allQuestions.length - 1) {
+      tabController.index += 1;
+    } else {
+      navigate(context);
+    }
+    buttonText();
+  }
 
-    List<Question> questions = jsonResult != null
-        ? List<Question>.from(
-            jsonResult.map((questionJson) => Question.fromJson(questionJson)))
-        : [];
+  void indexChanged() {
+    selectedAnswer = '';
+    buttonText();
+  }
 
-    currentQuestion = 1;
-    totalQuestions = questions.length;
-    print(questions.length);
+  String buttonText() {
+    return (tabController.index < allQuestions.length - 1)
+        ? 'Continue'
+        : 'Submit';
+  }
 
-    return questions;
+  void setSelectedAnswer(String answerKey) {
+    var answer = (answers
+            .where((answer) => answer.question == currentQuestion.question)
+            .toList()
+            .firstOrNull)
+        ?.question;
+
+    if (answer == null) {
+      selectedAnswer = answerKey;
+      dataMgr.setAnswer(SelectedAnswer(
+          question: currentQuestion.question, answer: answerKey));
+    }
+    print(answers.length);
+  }
+
+  bool highlightCell(String cellKey) {
+    for (var answer in answers) {
+      if (answer.question.contains(currentQuestion.question) &&
+          cellKey == answer.answer) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Color tabColor() {
+    for (var answer in answers) {
+      if (answer.question.contains(currentQuestion.question)) {
+        return answer.answer == currentQuestion.answer
+            ? Colors.green
+            : Colors.red;
+      }
+    }
+    return Colors.black;
+  }
+
+  int score() {
+    var count = 0;
+    for (var answer in answers) {
+      var question =
+          allQuestions.firstWhere((q) => q.question == answer.question);
+      if (answer.answer == question.answer) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
+  void navigate(BuildContext context) {
+    var s = score();
+    var t = allQuestions.length;
+
+    dataMgr.resetAnswers();
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ResultScreen(
+          score: s,
+          total: t,
+        ),
+      ),
+    );
   }
 }

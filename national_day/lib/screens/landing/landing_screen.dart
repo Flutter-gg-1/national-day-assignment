@@ -6,7 +6,7 @@ class LandingScreen extends StatelessWidget {
 
   _navigate(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => QuestionScreen()));
+        .push(MaterialPageRoute(builder: (context) => const QuestionScreen()));
   }
 
   @override
@@ -18,13 +18,38 @@ class LandingScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Explore', style: TextStyle(fontSize: 24)),
+              const Text('Explore',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
-              const Text('Saudi Arabia!', style: TextStyle(fontSize: 24)),
+              const Text('Saudi Arabia!',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green)),
               const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () => _navigate(context),
-                child: const Text("Let's Start"),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 40),
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8))),
+                          onPressed: () => _navigate(context),
+                          child: const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text(
+                              "Let's Start",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          )),
+                    ),
+                  ),
+                ],
               )
             ],
           ),

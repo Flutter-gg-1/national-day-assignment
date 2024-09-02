@@ -16,7 +16,6 @@ class Question {
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {
-    // ! there's a problem with this code (see below)
     final question = json['question'] as String;
     final a = json['A'] as String;
     final b = json['B'] as String;
@@ -25,4 +24,7 @@ class Question {
     final answer = json['answer'] as String;
     return Question(question: question, a: a, b: b, c: c, d: d, answer: answer);
   }
+
+  Map<String, dynamic> toJson() =>
+      {'question': question, 'A': a, 'B': b, 'C': c, 'D': d, 'answer': answer};
 }
