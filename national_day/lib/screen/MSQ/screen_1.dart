@@ -6,18 +6,16 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Hello World!'),
-            SizedBox(height: context.getScreenWidth(multiply: 0.1)),
-            MyButton(
-              onPressed: () {
-                context.goTo(const PageTwo());
-              },
-              text: 'Next',
+            Card(
+              child: ListTile(
+                title: Text('Hello World!'),
+                trailing: Icon(Icons.chevron_right),
+              ),
             ),
           ],
         ),
