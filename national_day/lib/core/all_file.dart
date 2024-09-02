@@ -1,4 +1,5 @@
-export './get_screen.dart';
+export 'my_extension/get_screen.dart';
+export 'my_extension/go_to.dart';
 export './common/my_button.dart';
 export '../dataQ/data_q.dart';
 export '../screen/MSQ/screen_1.dart';

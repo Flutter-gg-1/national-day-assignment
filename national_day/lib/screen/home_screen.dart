@@ -14,7 +14,9 @@ class HomeScreen extends StatelessWidget {
             const Text('Hello World!'),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
             MyButton(
-              onPressed: () {},
+              onPressed: () {
+                context.goTo(const PageOne());
+              },
               text: 'Let’s start',
             ),
           ],
