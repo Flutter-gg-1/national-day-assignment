@@ -69,7 +69,7 @@ class _QuestionScreenState extends State<QuestionScreen>
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 '${index + 1}',
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
           ).toList(),
@@ -159,7 +159,7 @@ class _QuestionScreenState extends State<QuestionScreen>
                                 padding: const EdgeInsets.all(16),
                                 child: Text(
                                   vm.buttonText(),
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 ),
                               )),
                         ),

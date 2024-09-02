@@ -10,7 +10,7 @@ class ResultScreen extends StatelessWidget {
 
   void _navigate(BuildContext context) {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LandingScreen()));
+        MaterialPageRoute(builder: (context) => const LandingScreen()));
   }
 
   @override
@@ -36,7 +36,7 @@ class ResultScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(vm.titleText(score, total),
-                                style: TextStyle(fontSize: 40)),
+                                style: const TextStyle(fontSize: 40)),
                             Text(
                                 'Your result is: ${score.toString()} / ${total.toString()}',
                                 style: const TextStyle(fontSize: 24)),

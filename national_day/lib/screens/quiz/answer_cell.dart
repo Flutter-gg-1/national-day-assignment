@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AnswerCell extends StatelessWidget {
   const AnswerCell(
-      {required this.answerKey,
+      {super.key, required this.answerKey,
       required this.answerValue,
       required this.answerNumber,
       required this.correctAnswer,
@@ -30,7 +30,7 @@ class AnswerCell extends StatelessWidget {
             color: Colors.white,
             border: Border.all(color: boxColor, width: 1.5),
             borderRadius: BorderRadius.circular(8),
-            boxShadow: [BoxShadow(color: boxColor, offset: Offset(0, 3))]),
+            boxShadow: [BoxShadow(color: boxColor, offset: const Offset(0, 3))]),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
