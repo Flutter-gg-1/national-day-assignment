@@ -14,22 +14,24 @@ class QuestionModel {
       required this.optionD,
       required this.answer});
 
-  QuestionModel.fromJson(Map<String, dynamic> json) {
-    question = json['question'];
-    optionA = json['optionA'];
-    optionB = json['optionB'];
-    optionC = json['optionC'];
-    optionD = json['optionD'];
-    answer = json['answer'];
+  factory QuestionModel.fromJson(Map<String, dynamic> json) {
+    return QuestionModel(
+      question: json['question'],
+      optionA: json['A'],
+      optionB: json['B'],
+      optionC: json['C'],
+      optionD: json['D'],
+      answer: json['answer'],
+    );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['question'] = question;
-    data['optionA'] = optionA;
-    data['optionB'] = optionB;
-    data['optionC'] = optionC;
-    data['optionD'] = optionD;
+    data['A'] = optionA;
+    data['B'] = optionB;
+    data['C'] = optionC;
+    data['D'] = optionD;
     data['answer'] = answer;
     return data;
   }

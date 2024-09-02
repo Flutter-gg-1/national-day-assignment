@@ -28,7 +28,7 @@ class OptionContainer extends StatelessWidget {
       color = Colors.blue;
     }
     return InkWell(
-      onTap: onTap!(value),
+      onTap:()=> onTap!(value),
       child: Container(
         margin: const EdgeInsets.only(left: 38, right: 38, top: 16),
         width: double.infinity,

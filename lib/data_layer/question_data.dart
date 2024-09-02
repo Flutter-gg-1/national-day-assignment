@@ -1,6 +1,6 @@
 import 'package:quiz_app/model/question_model.dart';
 
-class QuestionData {
+
   final dataQ = [
     {
       "question": "What is the capital city of Saudi Arabia?",
@@ -89,4 +89,4 @@ class QuestionData {
   List<QuestionModel> displayQuestions(List<Map<String, dynamic>> data) {
   return data.map((json) => QuestionModel.fromJson(json)).toList();
 }
-}
+
