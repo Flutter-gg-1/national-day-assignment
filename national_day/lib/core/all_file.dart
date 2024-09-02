@@ -1,6 +1,7 @@
 export 'my_extension/get_screen.dart';
 export 'my_extension/go_to.dart';
 export './common/my_button.dart';
+export './common/my_qs_container.dart';
 export '../dataQ/data_q.dart';
 export '../screen/MSQ/screen_1.dart';
 export '../screen/MSQ/screen_2.dart';
