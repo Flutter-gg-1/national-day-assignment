@@ -36,7 +36,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       selectedOption = option;
       isAnswered = true;
       bool isCorrect = selectedOption == correctAnswer;
-      locator.get<QuestionData>().saveScore(isCorrect, qIndex+1);
+      locator.get<QuestionData>().saveScore(isCorrect, qIndex + 1);
     });
   }
 
