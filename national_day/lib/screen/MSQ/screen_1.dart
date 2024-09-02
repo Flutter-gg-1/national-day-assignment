@@ -6,16 +6,22 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    Color? color;
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MyQsContainer(
-              color: Colors.red,
+              onTap: () {
+                color = MyColors.colorAnswer;
+              },
+              color: color,
               textQuestion: 'Question 1',
               textNumber: '1',
             ),
+            SizedBox(height: context.getScreenWidth(multiply: 0.1)),
+            MyButton(text: 'Continue', onPressed: () {}),
           ],
         ),
       ),

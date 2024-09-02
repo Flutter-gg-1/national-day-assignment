@@ -1,5 +1,6 @@
 export 'my_extension/get_screen.dart';
 export 'my_extension/go_to.dart';
+export './app_colors/my_colors.dart';
 export './common/my_button.dart';
 export './common/my_qs_container.dart';
 export '../dataQ/data_q.dart';
