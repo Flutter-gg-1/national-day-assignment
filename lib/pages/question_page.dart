@@ -26,7 +26,10 @@ class _QuestionPageState extends State<QuestionPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].question,
+                GetIt.I
+                    .get<QuestionData>()
+                    .lstQuestions[GetIt.I.get<QuestionData>().index]
+                    .question,
                 style: const TextStyle(fontSize: 30),
               ),
               const SizedBox(
@@ -68,7 +71,10 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].A,
+                          GetIt.I
+                              .get<QuestionData>()
+                              .lstQuestions[GetIt.I.get<QuestionData>().index]
+                              .A,
                         ),
                         const Text("A")
                       ],
@@ -115,7 +121,10 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].B,
+                          GetIt.I
+                              .get<QuestionData>()
+                              .lstQuestions[GetIt.I.get<QuestionData>().index]
+                              .B,
                         ),
                         const Text("B")
                       ],
@@ -162,7 +171,10 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].C,
+                          GetIt.I
+                              .get<QuestionData>()
+                              .lstQuestions[GetIt.I.get<QuestionData>().index]
+                              .C,
                         ),
                         const Text("C")
                       ],
@@ -209,7 +221,10 @@ class _QuestionPageState extends State<QuestionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          GetIt.I.get<QuestionData>().lstQuestions[GetIt.I.get<QuestionData>().index].D,
+                          GetIt.I
+                              .get<QuestionData>()
+                              .lstQuestions[GetIt.I.get<QuestionData>().index]
+                              .D,
                         ),
                         const Text("D")
                       ],
@@ -233,6 +248,8 @@ class _QuestionPageState extends State<QuestionPage> {
                       GetIt.I.get<QuestionData>().index++;
                       GetIt.I.get<QuestionData>().saveIndex();
                     } else {
+                      GetIt.I.get<QuestionData>().index = 0;
+                      GetIt.I.get<QuestionData>().saveIndex();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return const ScorePage();
