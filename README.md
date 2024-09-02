@@ -13,8 +13,8 @@ A quiz application built with Flutter that allows users to take quizzes on vario
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/turki-aloufi/Project-4.git
-   cd your-repository
+   git clone https://github.com/turki-aloufi/national-day-assignment.git
+   cd national-day-assignment
    ```
 
 2. **Install Dependencies**
@@ -34,4 +34,8 @@ A quiz application built with Flutter that allows users to take quizzes on vario
 - [Get_It](https://pub.dev/packages/get_it): ^7.7.0
 
 ## Screenshots
+<img src = "assets/Screenshot_20240902-200002.jpg" width="300" height="700">
 
+<img src = "assets/Screenshot_20240902-200009.jpg" width="300" height="700">
+
+<img src = "assets/Screenshot_20240902-200042.jpg" width="300" height="700">
