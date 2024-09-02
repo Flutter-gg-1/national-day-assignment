@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saudi_assignment/screens/question_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,7 +24,14 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: TextButton(
                   style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.transparent)),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context)=>QuestionScreen()
+                      )
+                    );
+                  },
                   child: const Text("Let's start", style: TextStyle(fontSize: 42.21, fontWeight: FontWeight.w700, color: Colors.black))
                 ),
               )

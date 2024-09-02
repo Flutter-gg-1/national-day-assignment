@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:saudi_assignment/screens/home_screen.dart';
+import 'package:saudi_assignment/services/setup.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setup();
   runApp(const MainApp());
 }
 
