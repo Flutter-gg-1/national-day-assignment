@@ -6,15 +6,30 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
               child: ListTile(
-                title: Text('Hello World!'),
-                trailing: Icon(Icons.chevron_right),
+                title: const Text('Hello World!'),
+                trailing: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: context.getScreenWidth(multiply: 0.1),
+                      width: context.getScreenWidth(multiply: 0.1),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: Colors.transparent,
+                        shape: BoxShape.rectangle,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
