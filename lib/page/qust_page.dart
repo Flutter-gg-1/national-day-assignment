@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:national_day/data_handle/gitt.dart';
 import 'package:national_day/data_handle/models/app_model.dart';
 import 'package:national_day/data_handle/models/qust_model.dart';
+import 'package:national_day/page/result_page.dart';
 import 'package:national_day/widget/contenu_buuton_widget.dart';
 import 'package:national_day/widget/qust_card_widget.dart';
 
@@ -24,6 +25,73 @@ class _QustPageState extends State<QustPage> {
   bool userAns = false;
 
   int curnetQusPage = getIt.get<AppModel>().curnetQusPage;
+  List<String> userAnsList = getIt.get<AppModel>().userAnsList;
+
+  @override
+  void initState() {
+    try {
+      String preAns = userAnsList[curnetQusPage];
+      userAns = true;
+
+      if (preAns == "A") {
+        bool temp = getIt.get<AppModel>().checkAns(ans: preAns ,old: true);
+
+        if (temp) {
+          aColor =  const Color(0xff1C8D21);
+        }else{
+
+          aColor =  const Color(0xffF0676F);
+        }
+      }
+
+
+
+       if (preAns == "B") {
+        bool temp = getIt.get<AppModel>().checkAns(ans: preAns , old: true);
+
+        if (temp) {
+          bColor =  const Color(0xff1C8D21);
+        }else{
+
+          bColor =  const Color(0xffF0676F);
+          
+        }
+       }
+
+
+
+         if (preAns == "C") {
+        bool temp = getIt.get<AppModel>().checkAns(ans: preAns, old: true);
+
+        if (temp) {
+          cColor =  const Color(0xff1C8D21);
+        }else{
+
+          cColor =const Color(0xffF0676F);
+
+        }
+      }
+      
+
+
+       if (preAns == "D") {
+        bool temp = getIt.get<AppModel>().checkAns(ans: preAns ,old: true);
+
+        if (temp) {
+          dColor = const Color(0xff1C8D21);
+        }else{
+          dColor = const Color(0xffF0676F);
+        }
+      }
+  
+  
+    } catch (ex) {
+
+    }
+
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +118,7 @@ class _QustPageState extends State<QustPage> {
                 if (userAns == false) {
                   userAns = true;
 
-                  if (getIt.get<AppModel>().checkAns("A")) {
+                  if (getIt.get<AppModel>().checkAns(ans: "A")) {
                     aColor = const Color(0xff1C8D21);
                   } else {
                     aColor = const Color(0xffF0676F);
@@ -71,7 +139,7 @@ class _QustPageState extends State<QustPage> {
                 if (userAns == false) {
                   userAns = true;
 
-                  if (getIt.get<AppModel>().checkAns("B")) {
+                  if (getIt.get<AppModel>().checkAns(ans: "B")) {
                     bColor = const Color(0xff1C8D21);
                   } else {
                     bColor = const Color(0xffF0676F);
@@ -92,7 +160,7 @@ class _QustPageState extends State<QustPage> {
                 if (userAns == false) {
                   userAns = true;
 
-                  if (getIt.get<AppModel>().checkAns("C")) {
+                  if (getIt.get<AppModel>().checkAns(ans: "C")) {
                     cColor = const Color(0xff1C8D21);
                   } else {
                     cColor = const Color(0xffF0676F);
@@ -113,7 +181,7 @@ class _QustPageState extends State<QustPage> {
                 if (userAns == false) {
                   userAns = true;
 
-                  if (getIt.get<AppModel>().checkAns("D")) {
+                  if (getIt.get<AppModel>().checkAns(ans: "D")) {
                     dColor = const Color(0xff1C8D21);
                   } else {
                     dColor = const Color(0xffF0676F);
@@ -140,7 +208,18 @@ class _QustPageState extends State<QustPage> {
                     cColor = const Color(0xffC9FBB1);
                     dColor = const Color(0xffC9FBB1);
 
-                     getIt.get<AppModel>().curnetQusPage =   ++curnetQusPage;
+                    getIt.get<AppModel>().curnetQusPage = ++curnetQusPage;
+                        getIt.get<AppModel>().saveData();
+                  }else{
+
+                    
+
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      int temp = getIt.get<AppModel>().totalAns();
+
+                      return  ResultPage(ans: temp,);
+                      
+                    },));
                   }
 
                   setState(() {});

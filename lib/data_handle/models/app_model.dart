@@ -6,28 +6,59 @@ class AppModel {
   final box = GetStorage();
 
   List<QustModel> qustList = [];
-  List<String> userAns = [];
+  List<String> userAnsList = [];
   int curnetQusPage = 0;
-  int totalAns = 0;
 
   AppModel() {
-    if (!box.hasData("dataQ")) {
-      for (var val in dataQ) {
-        qustList.add(QustModel.fromJson(val));
-      }
+    loadData();
+  }
+
+  void loadData() {
+    if (box.hasData("userAnsList")) {
+      userAnsList = List.from(box.read("userAnsList")).cast<String>();
+    }
+
+    if (box.hasData("curnetQusPage")) {
+      curnetQusPage = box.read("curnetQusPage");
+    }
+
+    for (var val in dataQ) {
+      qustList.add(QustModel.fromJson(val));
     }
   }
 
-  bool checkAns(String ans) {
+  void saveData() async {
+    await box.write("userAnsList", userAnsList);
+    await box.write("curnetQusPage", curnetQusPage);
+  }
 
-    
-    if (ans  == qustList[curnetQusPage].answer) {
+  bool checkAns({required String ans, bool? old}) {
+    if (old == null) {
+      userAnsList.add(ans);
+       saveData();
+    }
 
+
+    if (ans == qustList[curnetQusPage].answer) {
+      
       return true;
-
-
+      
     }
 
     return false;
+
+    
+  }
+
+  int totalAns() {
+    int ans = 0;
+
+    for (int i = 0; i < qustList.length; i++) {
+      if (qustList[i].answer == userAnsList[i]) {
+        ans += 1;
+      }
+    }
+
+    return ans;
   }
 }
