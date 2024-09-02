@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:quiz_app/data_layer/question_data.dart';
+import 'package:quiz_app/pages/score_page.dart';
 
 class QuestionPage extends StatefulWidget {
   const QuestionPage({super.key});
@@ -8,12 +11,12 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
-  bool trueAnswer = false;
   Color normalColorA = const Color(0xffC9FBB1);
   Color normalColorB = const Color(0xffC9FBB1);
   Color normalColorC = const Color(0xffC9FBB1);
   Color normalColorD = const Color(0xffC9FBB1);
   bool answered = false;
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +26,9 @@ class _QuestionPageState extends State<QuestionPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'What is the capital of saudi arabia',
-                style: TextStyle(fontSize: 30),
+              Text(
+                GetIt.I.get<QuestionData>().lstQuestions[index].question,
+                style: const TextStyle(fontSize: 30),
               ),
               const SizedBox(
                 height: 15,
@@ -33,16 +36,19 @@ class _QuestionPageState extends State<QuestionPage> {
               GestureDetector(
                 onTap: () {
                   if (!answered) {
-                    if (trueAnswer) {
+                    if (GetIt.I
+                            .get<QuestionData>()
+                            .lstQuestions[index]
+                            .answer ==
+                        'A') {
                       normalColorA = Colors.green;
+                      GetIt.I.get<QuestionData>().trueAnswers++;
                     } else {
                       normalColorA = Colors.red;
                     }
                     answered = true;
                     setState(() {});
                   }
-                                      print(answered);
-
                 },
                 child: Container(
                   height: 40,
@@ -56,11 +62,16 @@ class _QuestionPageState extends State<QuestionPage> {
                             spreadRadius: 2,
                             color: normalColorA)
                       ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("data"), Text("A")],
+                      children: [
+                        Text(
+                          GetIt.I.get<QuestionData>().lstQuestions[index].A,
+                        ),
+                        const Text("A")
+                      ],
                     ),
                   ),
                 ),
@@ -69,33 +80,22 @@ class _QuestionPageState extends State<QuestionPage> {
                 height: 15,
               ),
               GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 40,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                            offset: const Offset(1, 1),
-                            spreadRadius: 2,
-                            color: normalColorC)
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("data"), Text("B")],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  if (!answered) {
+                    if (GetIt.I
+                            .get<QuestionData>()
+                            .lstQuestions[index]
+                            .answer ==
+                        'B') {
+                      normalColorB = Colors.green;
+                      GetIt.I.get<QuestionData>().trueAnswers++;
+                    } else {
+                      normalColorB = Colors.red;
+                    }
+                    answered = true;
+                    setState(() {});
+                  }
+                },
                 child: Container(
                   height: 40,
                   width: 300,
@@ -108,11 +108,16 @@ class _QuestionPageState extends State<QuestionPage> {
                             spreadRadius: 2,
                             color: normalColorB)
                       ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("data"), Text("C")],
+                      children: [
+                        Text(
+                          GetIt.I.get<QuestionData>().lstQuestions[index].B,
+                        ),
+                        const Text("B")
+                      ],
                     ),
                   ),
                 ),
@@ -121,7 +126,68 @@ class _QuestionPageState extends State<QuestionPage> {
                 height: 15,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  if (!answered) {
+                    if (GetIt.I
+                            .get<QuestionData>()
+                            .lstQuestions[index]
+                            .answer ==
+                        'C') {
+                      normalColorC = Colors.green;
+                      GetIt.I.get<QuestionData>().trueAnswers++;
+                    } else {
+                      normalColorC = Colors.red;
+                    }
+                    answered = true;
+                    setState(() {});
+                  }
+                },
+                child: Container(
+                  height: 40,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: const Offset(1, 1),
+                            spreadRadius: 2,
+                            color: normalColorC)
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          GetIt.I.get<QuestionData>().lstQuestions[index].C,
+                        ),
+                        const Text("C")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (!answered) {
+                    if (GetIt.I
+                            .get<QuestionData>()
+                            .lstQuestions[index]
+                            .answer ==
+                        'D') {
+                      normalColorD = Colors.green;
+                      GetIt.I.get<QuestionData>().trueAnswers++;
+                    } else {
+                      normalColorD = Colors.red;
+                    }
+                    answered = true;
+                    setState(() {});
+                  }
+                },
                 child: Container(
                   height: 40,
                   width: 300,
@@ -134,11 +200,16 @@ class _QuestionPageState extends State<QuestionPage> {
                             spreadRadius: 2,
                             color: normalColorD)
                       ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("data"), Text("D")],
+                      children: [
+                        Text(
+                          GetIt.I.get<QuestionData>().lstQuestions[index].D,
+                        ),
+                        const Text("D")
+                      ],
                     ),
                   ),
                 ),
@@ -147,7 +218,23 @@ class _QuestionPageState extends State<QuestionPage> {
                 height: 30,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  if (index < GetIt.I.get<QuestionData>().lstQuestions.length-1) {
+                    normalColorA = const Color(0xffC9FBB1);
+                    normalColorB = const Color(0xffC9FBB1);
+                    normalColorC = const Color(0xffC9FBB1);
+                    normalColorD = const Color(0xffC9FBB1);
+                    answered = false;
+                    index++;
+                  } else {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const ScorePage();
+                    }));
+                  }
+
+                  setState(() {});
+                },
                 child: Container(
                   height: 100,
                   width: 300,
