@@ -5,6 +5,7 @@ import 'package:quiz_app/data_layer/question_storage.dart';
 import 'package:quiz_app/extension/size_config.dart';
 import 'package:quiz_app/model/question_model.dart';
 import 'package:quiz_app/src/score_screen.dart';
+import 'package:quiz_app/widget/button/green_button.dart';
 import 'package:quiz_app/widget/inkwell/option_container.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   int currentIndex = 0;
+  int score = 0;
   final List<QuestionModel> questions = displayQuestions(dataQ);
   String? selctedanswer;
   bool? isCorrect;
@@ -29,10 +31,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void checkAnswer(String answer) {
     selctedanswer = answer;
-    answer == questions[currentIndex].answer
-        ? isCorrect = true
-        : isCorrect = false;
-    Future.delayed(Duration.zero, () => setState(() {}));
+    if (answer == questions[currentIndex].answer) {
+      isCorrect = true;
+      score++;
+      locator.saveScore(score);
+      Future.delayed(Duration.zero, () => setState(() {}));
+    } else {
+      isCorrect = false;
+
+      Future.delayed(Duration.zero, () => setState(() {}));
+    }
   }
 
   void nextQuestion() {
@@ -47,7 +55,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => ScoreScreen(score: currentIndex + 1)),
+              builder: (context) => ScoreScreen(score: locator.getScore())),
         );
       }
     });
@@ -63,7 +71,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             SizedBox(
               height: context.getHeight() * 0.1,
             ),
-             Text(
+            Text(
               question.question,
               style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -74,6 +82,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
             SizedBox(
               height: context.getHeight() * 0.06,
             ),
+
+            //option A
             OptionContainer(
               option: question.optionA,
               value: 'A',
@@ -82,6 +92,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
               selctedanswer: selctedanswer,
               onTap: checkAnswer,
             ),
+
+            //option B
             OptionContainer(
               option: question.optionB,
               value: 'B',
@@ -90,37 +102,34 @@ class _QuestionScreenState extends State<QuestionScreen> {
               selctedanswer: selctedanswer,
               onTap: checkAnswer,
             ),
+
+            //option C
             OptionContainer(
               option: question.optionC,
               value: 'C',
               optionNumber: 3,
               isCorrect: isCorrect,
               selctedanswer: selctedanswer,
-              onTap: (p0) => checkAnswer(p0),
+              onTap: checkAnswer,
             ),
+
+            //option D
             OptionContainer(
               option: question.optionD,
               value: 'D',
               optionNumber: 4,
               isCorrect: isCorrect,
               selctedanswer: selctedanswer,
-              onTap: (p0) => checkAnswer,
+              onTap: checkAnswer,
             ),
             SizedBox(
               height: context.getHeight() * 0.2,
             ),
-            ElevatedButton(
-                onPressed: nextQuestion,
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    fixedSize: Size(
-                        context.getWidth() * 0.4, context.getHeight() * 0.07),
-                    backgroundColor: const Color(0xff1C8D21)),
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(fontSize: 23, color: Colors.white),
-                ))
+
+            GreenButton(
+              onPressed: nextQuestion,
+              title: 'Continue',
+            )
           ],
         ),
       )),

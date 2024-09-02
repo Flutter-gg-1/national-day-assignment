@@ -25,7 +25,7 @@ class OptionContainer extends StatelessWidget {
     } else if (selctedanswer == value) {
       color = isCorrect! ? const Color(0xff1C8D21) : Colors.red;
     } else {
-      color = Colors.blue;
+      color = const Color(0xffC9FBB1);
     }
     return InkWell(
       onTap:()=> onTap!(value),
