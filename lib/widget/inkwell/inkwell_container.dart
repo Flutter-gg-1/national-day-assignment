@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:quiz_app/extension/size_config.dart';
+import 'package:quiz_app/src/question_screen.dart';
 
 class InkWellContainer extends StatelessWidget {
   const InkWellContainer({
@@ -10,7 +10,11 @@ class InkWellContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const QuestionScreen(),
+          )),
       child: Container(
         alignment: Alignment.center,
         width: double.infinity,
@@ -27,9 +31,7 @@ class InkWellContainer extends StatelessWidget {
         child: const Text(
           "Let's start",
           style: TextStyle(
-              fontSize: 42,
-              fontWeight: FontWeight.bold,
-              color: Colors.black),
+              fontSize: 42, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
