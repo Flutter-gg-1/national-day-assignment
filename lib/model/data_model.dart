@@ -7,6 +7,7 @@ class DataModel {
     required this.D,
     required this.answer,
     required this.id,
+    required this.level,
   });
   late final String question;
   late final String A;
@@ -15,6 +16,7 @@ class DataModel {
   late final String D;
   late final String answer;
   late final int id;
+  late final String level;
   
   
   DataModel.fromJson(Map<String, dynamic> json){
@@ -25,6 +27,7 @@ class DataModel {
     D = json['D'];
     answer = json['answer'];
     id = json['id'];
+    level = json['level'];
   }
 
   Map<String, dynamic> toJson() {
@@ -36,6 +39,7 @@ class DataModel {
     data['D'] = D;
     data['answer'] = answer;
     data['id'] = id;
+    data['level'] = level;
     return data;
   }
 }

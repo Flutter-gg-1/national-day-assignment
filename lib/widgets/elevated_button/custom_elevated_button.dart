@@ -18,14 +18,13 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            shadowColor: Colors.transparent,
               padding: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),
           child: Ink(
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: backgroundColors),
-                borderRadius: BorderRadius.circular(15)),
+                borderRadius: BorderRadius.circular(20)),
             child: Container(
               width: width,
               height: height,
@@ -33,5 +32,13 @@ class CustomElevatedButton extends StatelessWidget {
               child: CustomText(text: text, fontSize: fontSize, fontWeight: fontWeight, color:  textcolor)),
             ),
           );
+    // Container(
+    //           height: height,
+    //           width: width,
+    //           decoration: BoxDecoration(gradient: const LinearGradient(colors: [Colors.white, Color(0xff1C8D21)], begin: Alignment.centerLeft), borderRadius: BorderRadius.circular(15)),
+    //           child: ElevatedButton(
+    //               style: ElevatedButton.styleFrom(backgroundColor: backgroundColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+    //               onPressed: onPressed, child: CustomText(text: text, fontSize: fontSize, fontWeight: fontWeight, color:  textcolor)),
+    // );
   }
 }
