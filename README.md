@@ -65,7 +65,7 @@ The Saudi National Day Quiz app is a fun and educational application designed to
 
 - Note: A video of UI is uploaded in assets/video
 
-<img src="./assets/images/screenshots/8.gif" width="364" height="800">
+![Gif](./assets/images/screenshots/8.gif)
 
 
 
