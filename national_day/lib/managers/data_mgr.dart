@@ -19,10 +19,8 @@ class DataMgr {
 
   Future<void> _fetchQuestions() async {
     if (box.read('questions') == null) {
-      print('loading from BUNDLE');
       allQuestions = await _loadQuestionsFromBundle();
     } else {
-      print('loading from STORAGE');
       allQuestions = await _loadQuestionsFromStorage();
     }
   }
@@ -82,5 +80,8 @@ class DataMgr {
     await box.write('answers', data);
   }
 
-  Future<void> resetAnswers() async => await box.remove('answers');
+  Future<void> resetAnswers() async {
+    allAnswers = [];
+    await box.remove('answers');
+  }
 }

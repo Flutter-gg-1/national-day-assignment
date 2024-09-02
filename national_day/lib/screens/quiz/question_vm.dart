@@ -85,12 +85,15 @@ class QuestionVM {
     return count;
   }
 
-  void navigate(BuildContext context) {
+  void navigate(BuildContext context) async {
     var s = score();
     var t = allQuestions.length;
 
-    dataMgr.resetAnswers();
+    await dataMgr.resetAnswers();
 
+    if (!context.mounted) {
+      return;
+    }
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ResultScreen(
