@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'custom_text.dart';
 
 class CustomAnsweresElevatedButton extends StatelessWidget {
   const CustomAnsweresElevatedButton({
@@ -9,7 +7,8 @@ class CustomAnsweresElevatedButton extends StatelessWidget {
     required this.number,
     required this.onPressed,
     this.isSelected = false,
-    this.isCorrect = true,
+    this.isCorrect = false,
+    this.isIncorrect = false,
   });
 
   final String answerText;
@@ -17,29 +16,45 @@ class CustomAnsweresElevatedButton extends StatelessWidget {
   final Function() onPressed;
   final bool isSelected;
   final bool isCorrect;
+  final bool isIncorrect;
 
   @override
   Widget build(BuildContext context) {
+    Color borderColor;
+    Color backgroundColor;
+
+    if (isSelected && isCorrect) {
+      borderColor = Colors.green;
+      backgroundColor = Colors.green.shade100;
+    } else if (isSelected && isIncorrect) {
+      borderColor = Colors.red;
+      backgroundColor = Colors.red.shade100;
+    } else {
+      borderColor = Colors.grey;
+      backgroundColor = Colors.white;
+    }
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        shadowColor: Colors.transparent,
-        side: BorderSide(
-          width: 2,
-          color: isSelected
-              ? (isCorrect ? Colors.green : Colors.red)
-              : const Color(0xffC9FBB1),
+        backgroundColor: backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(width: 2, color: borderColor),
         ),
+        shadowColor: Colors.transparent,
       ),
       onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText(
-            text: answerText,
-            fontSize: 12,
-            color: Colors.black,
+          Expanded(
+            child: Text(
+              answerText,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.black,
+              ),
+            ),
           ),
           Container(
             height: 17,
@@ -47,14 +62,16 @@ class CustomAnsweresElevatedButton extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(4),
-              border: Border.all(width: 1, color: const Color(0xffC9FBB1)),
+              border: Border.all(width: 1, color: borderColor),
             ),
             child: Center(
-              child: CustomText(
-                text: number,
-                fontSize: 8,
-                color: const Color(0xffAAE6A9),
-                fontWeight: FontWeight.bold,
+              child: Text(
+                number,
+                style: TextStyle(
+                  fontSize: 8,
+                  color: borderColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

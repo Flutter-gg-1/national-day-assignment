@@ -20,7 +20,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   int _currentIndex = 0;
   List<DataModel> _questions = [];
   String? _selectedAnswer;
-  bool _isAnswerCorrect = true;
+  bool? _isAnswerCorrect;
 
   @override
   void initState() {
@@ -36,36 +36,44 @@ class _QuestionScreenState extends State<QuestionScreen> {
   void _selectAnswer(String selectedAnswer) {
     setState(() {
       _selectedAnswer = selectedAnswer;
+      _isAnswerCorrect = _selectedAnswer == _questions[_currentIndex].answer;
     });
   }
 
   void _checkAnswer() {
-    if (_currentIndex >= _questions.length) {
-      return; 
-    }
-
-    String correctAnswer = _questions[_currentIndex].answer;
-    setState(() {
-      _isAnswerCorrect = _selectedAnswer == correctAnswer;
-      if (_isAnswerCorrect) {
+    if (_isAnswerCorrect == true) {
+      setState(() {
         _currentIndex++;
         if (_currentIndex >= _questions.length) {
-          _storage.erase(); 
+          _storage.erase(); // Clear storage on completion
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const Winner()),
           );
         } else {
           _storage.write('currentQuestionIndex', _currentIndex);
         }
-        _selectedAnswer = null;
-      } else {}
-    });
+        _selectedAnswer = null; // Reset for the next question
+        _isAnswerCorrect = null; // Reset correctness state
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Please select the correct answer to continue.')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    // Redirect to Winner screen if no questions are available
     if (_questions.isEmpty || _currentIndex >= _questions.length) {
-      return Scaffold();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const Winner()),
+        );
+      });
+      return const SizedBox
+          .shrink(); // Avoid rendering anything during redirection
     }
 
     final currentQuestion = _questions[_currentIndex];
@@ -94,13 +102,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
               CustomElevatedButton(
                 backgroundColors: [
                   const Color(0xff1C8D21),
-                  const Color(0xff1C8D21)
+                  const Color(0xff1C8D21),
                 ],
                 text: "Continue",
                 fontSize: 23,
                 fontWeight: FontWeight.bold,
                 textcolor: Colors.white,
-                onPressed: _selectedAnswer != null ? _checkAnswer : null,
+                onPressed: _isAnswerCorrect == true ? _checkAnswer : null,
                 height: 80,
                 width: 201,
               ),
@@ -112,12 +120,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget _buildAnswerButton(String answerText, String answerKey) {
+    bool isSelected = _selectedAnswer == answerKey;
+    bool isCorrect = _questions[_currentIndex].answer == answerKey;
+
     return CustomAnsweresElevatedButton(
       answerText: answerText,
       number: answerKey,
       onPressed: () => _selectAnswer(answerKey),
-      isSelected: _selectedAnswer == answerKey,
-      isCorrect: _isAnswerCorrect || _selectedAnswer != answerKey,
+      isSelected: isSelected,
+      isCorrect: _selectedAnswer != null && isCorrect,
+      isIncorrect: _selectedAnswer != null && !isCorrect && isSelected,
     );
   }
 }
