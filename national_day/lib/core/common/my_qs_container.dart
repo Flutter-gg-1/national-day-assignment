@@ -16,7 +16,7 @@ class MyQsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: textNumber == null ? null : onTap,
       child: Container(
         height: context.getScreenWidth(multiply: 0.17),
         width: context.getScreenWidth(multiply: 0.9),
