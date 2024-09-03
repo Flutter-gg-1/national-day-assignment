@@ -22,6 +22,7 @@ class ViewChoices extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 15.9),
                 decoration: BoxDecoration(
                   color: Colors.white,
+                  boxShadow: [BoxShadow(color: GetIt.I.get<Questions>().choicesColors[index], offset: const Offset(2, 2))],
                   border: Border.all(color: GetIt.I.get<Questions>().choicesColors[index], width: 0.82),
                   borderRadius: BorderRadius.circular(8.16),
                 ),

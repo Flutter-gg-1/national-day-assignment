@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saudi_assignment/data/questions.dart';
 import 'package:saudi_assignment/screens/question_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,6 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetIt.I.get<Questions>().index = 0;
     return Scaffold(
       body: SafeArea(
         child: Center(
