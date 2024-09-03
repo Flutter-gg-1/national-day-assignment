@@ -5,12 +5,12 @@ class MyQsContainer extends StatelessWidget {
   const MyQsContainer(
       {super.key,
       required this.textQuestion,
-      required this.textNumber,
+      this.textNumber,
       this.color,
       this.onTap});
 
   final String textQuestion;
-  final String textNumber;
+  final int? textNumber;
   final Color? color;
   final Function()? onTap;
   @override
@@ -37,14 +37,22 @@ class MyQsContainer extends StatelessWidget {
                   height: context.getScreenWidth(multiply: 0.1),
                   width: context.getScreenWidth(multiply: 0.1),
                   decoration: BoxDecoration(
-                    border: Border.all(color: color ?? MyColors.colorQuestion),
+                    border: Border.all(
+                      color: textNumber == null
+                          ? Colors.transparent
+                          : (color ?? MyColors.colorQuestion),
+                    ),
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     color: Colors.transparent,
                     shape: BoxShape.rectangle,
                   ),
                   child: Center(
-                    child: Text(textNumber,
-                        style: TextStyle(color: color ?? MyColors.colorQuestion, fontSize: 20)),
+                    child: Text(textNumber.toString(),
+                        style: TextStyle(
+                            color: textNumber == null
+                                ? Colors.transparent
+                                : (color ?? MyColors.colorQuestion),
+                            fontSize: 20)),
                   ),
                 ),
               ],

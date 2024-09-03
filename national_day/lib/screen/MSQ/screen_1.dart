@@ -20,7 +20,6 @@ class PageOne extends StatelessWidget {
               },
               color: color,
               textQuestion: getIt.get<QsDataLayer>().qsList.first.question,
-              textNumber: '1',
             ),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
             MyButton(
