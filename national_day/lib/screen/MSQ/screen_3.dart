@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:national_day/data_layer/qs_data_layer.dart';
 import 'package:national_day/servers/setub.dart';
@@ -8,6 +10,7 @@ class PageThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int index = Random().nextInt(10);
     Color? color;
     return Scaffold(
       body: Center(
@@ -19,30 +22,30 @@ class PageThree extends StatelessWidget {
                 color = MyColors.colorAnswer;
               },
               color: color,
-              textQuestion: getIt.get<QsDataLayer>().qsList[2].question,
+              textQuestion: getIt.get<QsDataLayer>().qsList[index].question,
             ),
             MyQsContainer(
               onTap: () {},
               color: color,
-              textQuestion: getIt.get<QsDataLayer>().qsList[2].a,
+              textQuestion: getIt.get<QsDataLayer>().qsList[index].a,
               textNumber: 1,
             ),
             MyQsContainer(
               onTap: () {},
               color: color,
-              textQuestion: getIt.get<QsDataLayer>().qsList[2].b,
+              textQuestion: getIt.get<QsDataLayer>().qsList[index].b,
               textNumber: 2,
             ),
             MyQsContainer(
               onTap: () {},
               color: color,
-              textQuestion: getIt.get<QsDataLayer>().qsList[2].c,
+              textQuestion: getIt.get<QsDataLayer>().qsList[index].c,
               textNumber: 3,
             ),
             MyQsContainer(
               onTap: () {},
               color: color,
-              textQuestion: getIt.get<QsDataLayer>().qsList[2].d,
+              textQuestion: getIt.get<QsDataLayer>().qsList[index].d,
               textNumber: 4,
             ),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
