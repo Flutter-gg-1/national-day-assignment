@@ -40,7 +40,7 @@ class StartScreen extends StatelessWidget {
                     },
                     child: const Text(
                       "Let's start",
-                      style: TextStyle(color: Colors.black, fontSize: 32),
+                      style: TextStyle(color: Colors.white, fontSize: 32),
                     ))
                     )
           ],
