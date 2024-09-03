@@ -21,6 +21,16 @@ class PageOne extends StatelessWidget {
               color: color,
               textQuestion: getIt.get<QsDataLayer>().qsList.first.question,
             ),
+            ...List.generate(4, (index) {
+              return MyQsContainer(
+                onTap: () {
+                  color = MyColors.colorAnswer;
+                },
+                color: color,
+                textQuestion:
+                    getIt.get<QsDataLayer>().qsList[index + 1].question,
+              );
+            }),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
             MyButton(
                 text: 'Continue',
