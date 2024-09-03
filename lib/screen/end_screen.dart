@@ -39,6 +39,7 @@ class _EndScreenState extends State<EndScreen> {
         ConfettiController(duration: const Duration(seconds: 10));
     _controllerBottomCenter =
         ConfettiController(duration: const Duration(seconds: 10));
+    _controllerBottomCenter.play();
   }
 
   @override
@@ -84,132 +85,15 @@ class _EndScreenState extends State<EndScreen> {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: ConfettiWidget(
-                confettiController: _controllerCenter,
-                blastDirectionality: BlastDirectionality
-                    .explosive, 
-                shouldLoop:
-                    true, 
-                colors: const [
-                  Colors.green,
-                  Colors.green,
-                  Colors.green,
-                  Colors.green,
-                  Colors.green
-                ], 
-                createParticlePath: drawStar,
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: TextButton(
-                  onPressed: () {
-                    _controllerCenter.play();
-                  },
-                  child: _display('blast\nstars')),
-            ),
-
-            Align(
-              alignment: Alignment.centerRight,
-              child: ConfettiWidget(
-                confettiController: _controllerCenterRight,
-                blastDirection: pi, 
-                particleDrag: 0.05, 
-                emissionFrequency: 0.05, 
-                numberOfParticles: 20, 
-                gravity: 0.05,
-                shouldLoop: false,
-                colors: const [
-                  Colors.green,
-                  Colors.green,
-                  Colors.green
-                ], 
-                strokeWidth: 1,
-                strokeColor: Colors.white,
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                  onPressed: () {
-                    _controllerCenterRight.play();
-                  },
-                  child: _display('pump left')),
-            ),
-
-            Align(
-              alignment: Alignment.centerLeft,
-              child: ConfettiWidget(
-                confettiController: _controllerCenterLeft,
-                blastDirection: 0, 
-                emissionFrequency: 0.6,
-                minimumSize: const Size(10,
-                    10), 
-                maximumSize: const Size(50,
-                    50), 
-                numberOfParticles: 1,
-                gravity: 0.1,
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton(
-                  onPressed: () {
-                    _controllerCenterLeft.play();
-                  },
-                  child: _display('singles')),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: ConfettiWidget(
-                confettiController: _controllerTopCenter,
-                blastDirection: pi / 2,
-                maxBlastForce: 5,
-                minBlastForce: 2, 
-                emissionFrequency: 0.05,
-                numberOfParticles: 50, 
-                gravity: 1,
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: TextButton(
-                  onPressed: () {
-                    _controllerTopCenter.play();
-                  },
-                  child: _display('goliath')),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ConfettiWidget(
-                confettiController: _controllerBottomCenter,
-                blastDirection: -pi / 2,
-                emissionFrequency: 0.01,
-                numberOfParticles: 20,
-                maxBlastForce: 100,
-                minBlastForce: 80,
-                gravity: 0.3,
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: TextButton(
-                  onPressed: () {
-                    _controllerBottomCenter.play();
-                  },
-                  child: _display('hard and infrequent')),
-            ),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     FontAwesomeIcons.trophy,
                     color: Colors.yellow,
                   ),
-                  Center(
+                  const Center(
                     child: CustomText(
                         text: " Congratulation!",
                         color: Colors.black,
@@ -224,16 +108,76 @@ class _EndScreenState extends State<EndScreen> {
                 ],
               ),
             ),
+            Align(
+              alignment: Alignment.center,
+              child: ConfettiWidget(
+                confettiController: _controllerCenter,
+                blastDirectionality: BlastDirectionality.explosive,
+                shouldLoop: true,
+                colors: const [
+                  Colors.green,
+                  Colors.green,
+                  Colors.green,
+                  Colors.green,
+                  Colors.green
+                ],
+                createParticlePath: drawStar,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: ConfettiWidget(
+                confettiController: _controllerCenterRight,
+                blastDirection: pi,
+                particleDrag: 0.05,
+                emissionFrequency: 0.05,
+                numberOfParticles: 20,
+                gravity: 0.05,
+                shouldLoop: false,
+                colors: const [Colors.green, Colors.green, Colors.green],
+                strokeWidth: 1,
+                strokeColor: Colors.white,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: ConfettiWidget(
+                confettiController: _controllerCenterLeft,
+                blastDirection: 0,
+                emissionFrequency: 0.6,
+                minimumSize: const Size(10, 10),
+                maximumSize: const Size(50, 50),
+                numberOfParticles: 1,
+                gravity: 0.1,
+              ),
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: ConfettiWidget(
+                confettiController: _controllerTopCenter,
+                blastDirection: pi / 2,
+                maxBlastForce: 5,
+                minBlastForce: 2,
+                emissionFrequency: 0.05,
+                numberOfParticles: 50,
+                gravity: 1,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ConfettiWidget(
+                confettiController: _controllerBottomCenter,
+                blastDirection: -pi / 2,
+                emissionFrequency: 0.01,
+                numberOfParticles: 20,
+                maxBlastForce: 100,
+                minBlastForce: 80,
+                gravity: 0.3,
+              ),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Text _display(String text) {
-    return Text(
-      text,
-      style: const TextStyle(color: Colors.white, fontSize: 20),
     );
   }
 }
