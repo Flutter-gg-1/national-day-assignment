@@ -5,7 +5,6 @@ class QsModel {
   final String b;
   final String c;
   final String d;
-  final String correctAnswer;
   QsModel({
     required this.question,
     required this.answer,
@@ -13,18 +12,16 @@ class QsModel {
     required this.b,
     required this.c,
     required this.d,
-    required this.correctAnswer,
   });
 
   factory QsModel.fromJson(Map<String, dynamic> json) {
     return QsModel(
       question: json['question'],
       answer: json['answer'],
-      a: json['a'],
-      b: json['b'],
-      c: json['c'],
-      d: json['d'],
-      correctAnswer: json['correctAnswer'],
+      a: json['A'],
+      b: json['B'],
+      c: json['C'],
+      d: json['D'],
     );
   }
 
@@ -32,11 +29,10 @@ class QsModel {
     return {
       'question': question,
       'answer': answer,
-      'a': a,
-      'b': b,
-      'c': c,
-      'd': d,
-      'correctAnswer': correctAnswer,
+      'A': a,
+      'B': b,
+      'C': c,
+      'D': d,
     };
   }
 }

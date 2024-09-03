@@ -25,10 +25,9 @@ class PageOne extends StatelessWidget {
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
             MyButton(
                 text: 'Continue',
-                onPressed: () async{
-                  await getIt.get<QsDataLayer>().saveData();
-                  var data = getIt.get<QsDataLayer>().test();
-                  print(data);
+                onPressed: () async {
+                  // var data = getIt.get<QsDataLayer>().test();
+                  print(QsDataLayer().qsList.first.question);
                 }),
           ],
         ),

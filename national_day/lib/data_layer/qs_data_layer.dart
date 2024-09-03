@@ -6,25 +6,27 @@ import '../model/qs_model.dart';
 class QsDataLayer {
   final box = GetStorage();
   final List<QsModel> qsList = [];
-
+  QsDataLayer() {
+    loadData();
+    print('QsDataLayer: ${qsList.length}');
+  }
   test() {
     return box.read('qsList');
   }
 
-  lodData() {
-    if (box.read('qsList') != null) {
-      for (var element in dataQ) {
+  loadData() {
+    print('qsList: ${qsList.length}');
+    if (box.hasData('qsList')) {
+      print('---------here--------');
+      for (var element in box.read('qsList')) {
         qsList.add(QsModel.fromJson(element));
       }
-    } else {
-      for (var element in List.from(box.read('qsList')).cast<dynamic>()) {
-        qsList.add(QsModel.fromJson(element));
-      }
-      box.write('qsList', qsList);
+      print('qsList: ${qsList.length}');
     }
   }
 
   saveData() {
+    print('qsList: ${qsList.length}');
     box.write('qsList', List.from(dataQ).cast<dynamic>());
   }
 }
