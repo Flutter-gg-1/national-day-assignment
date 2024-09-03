@@ -8,9 +8,9 @@ class ScoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assest/image/scorebackground.jpg'),
+              image: score>=6 ? const AssetImage('assest/image/scorebackground.jpg'):const AssetImage('assest/image/badScore.png'),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -21,8 +21,8 @@ class ScoreScreen extends StatelessWidget {
               SizedBox(
                 height: context.getHeight() * 0.2,
               ),
-              const Text(
-                'Congratulation!',
+               Text(
+                score>=6 ?'Congratulation!': 'Bad Score :(',
                 style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
               ),
               Text(

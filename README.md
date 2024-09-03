@@ -58,6 +58,8 @@ The purpose of this app is to apply a simple quiz to the user about Saudi Nation
 ![alt text](assest/readme/right.png)
 ![alt text](assest/readme/wrong.png)
 ![alt text](assest/readme/score.png)
+![alt text](assest/readme/badScore.png)
+
 
 ### Demo GIF
 
