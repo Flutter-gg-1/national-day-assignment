@@ -95,8 +95,19 @@ final dataQ = [
 
 ```
 
-## Design in Figma: https://www.figma.com/design/hItzXF0WgTarpFiuXEVKkv/national-day---assignment?node-id=0-1&t=Es9eNrxjqfYE9TBv-1
 
-## Deadline
+ ### out put
+![Screenshot 2024-09-03 at 9 35 13 AM](https://github.com/user-attachments/assets/4c8acbea-46d8-4a9a-af9c-79edd0be9e26)
 
-Please submit your completed assignment by **Tuesday, Sep 3, 2024, at 9:59 AM**.
+ ![Screenshot 2024-09-03 at 9 35 22 AM](https://github.com/user-attachments/assets/b5aea0de-b7c7-44a3-8430-185369494d07)
+
+![Screenshot 2024-09-03 at 9 35 27 AM](https://github.com/user-attachments/assets/fae90d45-0c95-4a11-b294-c3ddc09502b8)
+
+
+https://github.com/user-attachments/assets/2d69ca3a-57a0-4cf1-8d0d-08e9562c719c
+
+
+
+
+
+ 
