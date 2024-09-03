@@ -13,22 +13,23 @@ class PageOne extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: getIt.get<QsDataLayer>().qsList.map(
-            (e) {
-              return MyQsContainer(
-                textQuestion: e.question, textNumber: '1',
-              );
-            }
-          ).toList(),
-
-          // SizedBox(height: context.getScreenWidth(multiply: 0.1)),
-          // MyButton(
-          //     text: 'Continue',
-          //     onPressed: () async {
-          //       // print(QsDataLayer().qsList.first.question);
-          //       // print(QsDataLayer().qsList.first.d);
-          //     }),
-          
+          children: [
+            MyQsContainer(
+              onTap: () {
+                color = MyColors.colorAnswer;
+              },
+              color: color,
+              textQuestion: getIt.get<QsDataLayer>().qsList.first.question,
+              textNumber: '1',
+            ),
+            SizedBox(height: context.getScreenWidth(multiply: 0.1)),
+            MyButton(
+                text: 'Continue',
+                onPressed: () async {
+                  // print(QsDataLayer().qsList.first.question);
+                  // print(QsDataLayer().qsList.first.c);
+                }),
+          ],
         ),
       ),
     );
