@@ -25,13 +25,13 @@ This project involves questions about saudi arabia, allow users to answers vario
 <img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets\correct_answer.jpg">
 
 #### - wroing answer:
-<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\wrong_answer.jpg">
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets\wrong_answer.jpg">
 
 #### - continue:
-<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\continue.jpg">
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets\continue.jpg">
 
 #### - ResultScreen:
-<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\result_page.jpg">
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets\result_page.jpg">
 
 
 ## Author:
