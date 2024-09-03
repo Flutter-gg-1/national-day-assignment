@@ -24,12 +24,6 @@ class _QuizScreenState extends State<QuizScreen> {
   Color choiec4 = const Color(0xffC9FBB1);
 
   @override
-  void initState() {
-    super.initState();
-    var data = GetIt.I.get<QuizData>();
-    data.addData;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
