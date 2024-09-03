@@ -1,102 +1,40 @@
 # National day Assignment 🇸🇦
 
-This assignment involves questions about saudi arabia, allow users to answers various questions.
+This project involves questions about saudi arabia, allow users to answers various questions.
+ 
 
-## Assignment Overview
 
-- **Use get_it**: to get all the answers and questions, store the correct answers.
-- **Use GetStorage**: Save the level where you stopped, and continue the subsequent levels upon restarting the application.
 
-## JSON Data Structure
-The questions & answers data is stored in a JSON format with the following structure:
-```
-final dataQ = [
-  {
-    "question": "What is the capital city of Saudi Arabia?",
-    "A": "Jeddah",
-    "B": "Riyadh",
-    "C": "Dammam",
-    "D": "Mecca",
-    "answer": "B"
-  },
-  {
-    "question": "In which year was Saudi Arabia founded?",
-    "A": "1902",
-    "B": "1912",
-    "C": "1932",
-    "D": "1952",
-    "answer": "C"
-  },
-  {
-    "question": "Which desert covers most of Saudi Arabia?",
-    "A": "Gobi Desert",
-    "B": "Sahara Desert",
-    "C": "Thar Desert",
-    "D": "Rub' al Khali (Empty Quarter)",
-    "answer": "D"
-  },
-  {
-    "question": "What is the official language of Saudi Arabia?",
-    "A": "Arabic",
-    "B": "Urdu",
-    "C": "English",
-    "D": "Turkish",
-    "answer": "A"
-  },
-  {
-    "question": "What is the currency of Saudi Arabia?",
-    "A": "Riyal",
-    "B": "Dinar",
-    "C": "Dirham",
-    "D": "Pound",
-    "answer": "A"
-  },
-  {
-    "question": "What is the main religion practiced in Saudi Arabia?",
-    "A": "Christianity",
-    "B": "Hinduism",
-    "C": "Islam",
-    "D": "Buddhism",
-    "answer": "C"
-  },
-  {
-    "question": "Which holy city in Saudi Arabia do millions of Muslims visit annually?",
-    "A": "Medina",
-    "B": "Jeddah",
-    "C": "Mecca",
-    "D": "Taif",
-    "answer": "C"
-  },
-  {
-    "question": "Saudi Arabia is known for being the world's largest exporter of what resource?",
-    "A": "Natural gas",
-    "B": "Coal",
-    "C": "Petroleum (Oil)",
-    "D": "Gold",
-    "answer": "C"
-  },
-  {
-    "question": "Which Saudi Arabian city is known as the 'Gateway to the Two Holy Mosques'?",
-    "A": "Jeddah",
-    "B": "Riyadh",
-    "C": "Medina",
-    "D": "Mecca",
-    "answer": "A"
-  },
-  {
-    "question": "Which body of water lies to the west of Saudi Arabia?",
-    "A": "Arabian Sea",
-    "B": "Red Sea",
-    "C": "Persian Gulf",
-    "D": "Mediterranean Sea",
-    "answer": "B"
-  }
-];
 
-```
+## project Details:
 
-## Design in Figma: https://www.figma.com/design/hItzXF0WgTarpFiuXEVKkv/national-day---assignment?node-id=0-1&t=Es9eNrxjqfYE9TBv-1
+#### -when start if there is score stored the start button will ask user to continue if theres is not, user will stsrt thire quiz
+#### -if user choose the correct answer it's color will turn gereen. otherwise it will turn red.
+#### -last thing when they done with the quiz thire score will show in result screen.
 
-## Deadline
 
-Please submit your completed assignment by **Tuesday, Sep 3, 2024, at 9:59 AM**.
+
+
+## project output:
+
+#### - StartScreen:
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets/start_page.jpg">
+
+
+#### - Correct answer:
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_assets\correct_answer.jpg">
+
+#### - wroing answer:
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\wrong_answer.jpg">
+
+#### - continue:
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\continue.jpg">
+
+#### - ResultScreen:
+<img width="200"  alt="Screenshot 2024-08-13 at 4 06 57 PM" src="README_Assets\result_page.jpg">
+
+
+## Author:
+Rahaf Alghamdi
+
+
