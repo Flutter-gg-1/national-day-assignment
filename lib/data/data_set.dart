@@ -1,4 +1,4 @@
-final List<Map<String, dynamic>> dataQ = [
+final List<Map<String, dynamic>> dataQuest = [
   {
     "question": "What is the capital city of Saudi Arabia?",
     "A": "Jeddah",

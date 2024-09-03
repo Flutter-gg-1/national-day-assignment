@@ -14,8 +14,9 @@ class QuestionModel {
       required this.d,
       required this.answer});
 
-  QuestionModel.fromJson(Map<String, dynamic> json, this.question, this.a,
-      this.b, this.c, this.d, this.answer) {
+  QuestionModel.fromJson(
+    Map<String, dynamic> json,
+  ) {
     question = json['question'];
     a = json['A'];
     b = json['B'];
