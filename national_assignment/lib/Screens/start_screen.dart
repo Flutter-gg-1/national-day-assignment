@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:national_assignment/Colors/app_color.dart';
 import 'package:national_assignment/Screens/qustions_screen.dart';
 import 'package:national_assignment/helper/nav.dart';
 
@@ -22,7 +21,7 @@ class StartScreen extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 42,
-                  color: AppColor().greenColor),
+                  color: Colors.green),
             ),
             SizedBox(
               height: 40,
@@ -34,15 +33,14 @@ class StartScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        backgroundColor: AppColor().greenColor),
+                        backgroundColor: Colors.green),
                     onPressed: () {
                       context.push(screen: QustionsScreen());
                     },
                     child: const Text(
                       "Let's start",
                       style: TextStyle(color: Colors.white, fontSize: 32),
-                    ))
-                    )
+                    )))
           ],
         ),
       ),

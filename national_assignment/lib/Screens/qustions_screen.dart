@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:national_assignment/Colors/app_color.dart';
 import 'package:national_assignment/DataLayer/qustions_data.dart';
 import 'package:national_assignment/Screens/result_score.dart';
 
@@ -12,27 +11,6 @@ class QustionsScreen extends StatefulWidget {
 }
 
 class _QustionsScreenState extends State<QustionsScreen> {
-  // int index = 0;
-  // late QuestionData data;
-  // String? selectedAnswer; // Track the selected answer
-  // bool isCorrect = false; // Track if the selected answer is correct
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   data = GetIt.I.get<QuestionData>();
-  //   data.loadData();
-  // }
-
-  // void checkAnswer() {
-  //   // Compare the selected answer with the correct answer
-  //   if (selectedAnswer == data.dataQuestion![index].answer) {
-  //     isCorrect = true;
-  //   } else {
-  //     isCorrect = false;
-  //   }
-  // }
-
   Color normalColorA = const Color(0xffC9FBB1);
   Color normalColorB = const Color(0xffC9FBB1);
   Color normalColorC = const Color(0xffC9FBB1);
@@ -48,13 +26,13 @@ class _QustionsScreenState extends State<QustionsScreen> {
           children: [
             Wrap(
               children: [
-                // Text(data.dataQuestion![index].question,
-                //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                //     textAlign: TextAlign.center),
-                Text( GetIt.I
-                    .get<QuestionData>()
-                    .lstQuestions[GetIt.I.get<QuestionData>().index]
-                    .question,)
+                Text(
+                    GetIt.I
+                        .get<QuestionData>()
+                        .lstQuestions[GetIt.I.get<QuestionData>().index]
+                        .question,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    textAlign: TextAlign.center),
               ],
             ),
             const SizedBox(
@@ -107,11 +85,14 @@ class _QustionsScreenState extends State<QustionsScreen> {
                           child: Center(
                             child: Text(
                               "1",
-                              style: TextStyle(color: AppColor().answerColor),
+                              style: TextStyle(color: normalColorA),
                             ),
                           ),
                         )
                       ]))),
+            ),
+            SizedBox(
+              height: 10,
             ),
             InkWell(
               onTap: () {
@@ -155,15 +136,18 @@ class _QustionsScreenState extends State<QustionsScreen> {
                           width: 28,
                           decoration: BoxDecoration(
                               border:
-                                  Border.all(color: normalColorA, width: 2)),
+                                  Border.all(color: normalColorB, width: 2)),
                           child: Center(
                             child: Text(
                               "2",
-                              style: TextStyle(color: AppColor().answerColor),
+                              style: TextStyle(color: normalColorB),
                             ),
                           ),
                         )
                       ]))),
+            ),
+            SizedBox(
+              height: 10,
             ),
             InkWell(
               onTap: () {
@@ -207,15 +191,18 @@ class _QustionsScreenState extends State<QustionsScreen> {
                           width: 28,
                           decoration: BoxDecoration(
                               border:
-                                  Border.all(color: normalColorA, width: 2)),
+                                  Border.all(color: normalColorC, width: 2)),
                           child: Center(
                             child: Text(
                               "3",
-                              style: TextStyle(color: AppColor().answerColor),
+                              style: TextStyle(color: normalColorC),
                             ),
                           ),
                         )
                       ]))),
+            ),
+            SizedBox(
+              height: 10,
             ),
             InkWell(
               onTap: () {
@@ -264,11 +251,14 @@ class _QustionsScreenState extends State<QustionsScreen> {
                           child: Center(
                             child: Text(
                               "4",
-                              style: TextStyle(color: AppColor().answerColor),
+                              style: TextStyle(color: normalColorD),
                             ),
                           ),
                         )
                       ]))),
+            ),
+            SizedBox(
+              height: 40,
             ),
             SizedBox(
                 height: 55,
@@ -277,7 +267,7 @@ class _QustionsScreenState extends State<QustionsScreen> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        backgroundColor: AppColor().greenColor),
+                        backgroundColor: Colors.green),
                     onPressed: () {
                       if (answered) {
                         if (GetIt.I.get<QuestionData>().index <
