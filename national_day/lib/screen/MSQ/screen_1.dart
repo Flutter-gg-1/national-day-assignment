@@ -21,22 +21,35 @@ class PageOne extends StatelessWidget {
               color: color,
               textQuestion: getIt.get<QsDataLayer>().qsList.first.question,
             ),
-            ...List.generate(4, (index) {
-              return MyQsContainer(
-                onTap: () {
-                  color = MyColors.colorAnswer;
-                },
-                color: color,
-                textQuestion:
-                    getIt.get<QsDataLayer>().qsList[index + 1].question,
-              );
-            }),
+            MyQsContainer(
+              onTap: () {},
+              color: color,
+              textQuestion: getIt.get<QsDataLayer>().qsList.first.a,
+              textNumber: 1,
+            ),
+            MyQsContainer(
+              onTap: () {},
+              color: color,
+              textQuestion: getIt.get<QsDataLayer>().qsList.first.b,
+              textNumber: 2,
+            ),
+            MyQsContainer(
+              onTap: () {},
+              color: color,
+              textQuestion: getIt.get<QsDataLayer>().qsList.first.c,
+              textNumber: 3,
+            ),
+            MyQsContainer(
+              onTap: () {},
+              color: color,
+              textQuestion: getIt.get<QsDataLayer>().qsList.first.d,
+              textNumber: 4,
+            ),
             SizedBox(height: context.getScreenWidth(multiply: 0.1)),
             MyButton(
                 text: 'Continue',
-                onPressed: () async {
-                  // print(QsDataLayer().qsList.first.question);
-                  // print(QsDataLayer().qsList.first.c);
+                onPressed: () {
+                  context.goTo(const PageTwo());
                 }),
           ],
         ),
