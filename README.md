@@ -3,7 +3,7 @@
 ## Overview
 
 ### Purpose
-The purpose of this app is apply a simple quiz to the user about Saudi national day.
+The purpose of this app is to apply a simple quiz to the user about Saudi National Day. 🇸🇦
 
 ### Features
 - Display Question: Users can answer the question.
