@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:quiz_app/data_layer/question_data.dart';
 import 'package:quiz_app/data_layer/question_storage.dart';
 import 'package:quiz_app/extension/size_config.dart';
-import 'package:quiz_app/model/question_model.dart';
 import 'package:quiz_app/src/score_screen.dart';
 import 'package:quiz_app/widget/button/green_button.dart';
 import 'package:quiz_app/widget/inkwell/option_container.dart';
@@ -18,11 +16,10 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   int currentIndex = 0;
   int score = 0;
-  final List<QuestionModel> questions = displayQuestions(dataQ);
   String? selctedanswer;
   bool? isCorrect;
   final QuestionStorage locator = GetIt.I<QuestionStorage>();
-  late var question = questions[currentIndex];
+  late var question = locator.questions[currentIndex];
   @override
   void initState() {
     super.initState();
@@ -31,7 +28,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void checkAnswer(String answer) {
     selctedanswer = answer;
-    if (answer == questions[currentIndex].answer) {
+    if (answer == question.answer) {
       isCorrect = true;
       score++;
       locator.saveScore(score);
@@ -45,11 +42,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void nextQuestion() {
     setState(() {
-      if (currentIndex < questions.length - 1) {
+      if (currentIndex < locator.questions.length - 1) {
         currentIndex++;
         selctedanswer = null;
         isCorrect = null;
-        question = questions[currentIndex];
+        question = locator.questions[currentIndex];
         locator.saveAnswerLevel(currentIndex);
       } else {
         Navigator.pushReplacement(
@@ -71,10 +68,14 @@ class _QuestionScreenState extends State<QuestionScreen> {
             SizedBox(
               height: context.getHeight() * 0.1,
             ),
-            Text(
-              question.question,
-              style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                question.question,
+                style:
+                    const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
             const SizedBox(
               height: 28,
